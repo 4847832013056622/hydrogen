@@ -16,6 +16,8 @@ class HydrogenDeploy extends Deploy {
     shop: commonFlags.shop,
   };
 
+  static hidden = true;
+
   async run() {
     const {flags} = await this.parse(HydrogenDeploy);
     const actualPath = flags.path ?? process.cwd();
