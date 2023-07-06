@@ -8,47 +8,28 @@ import {
   SpyInstance,
 } from 'vitest';
 import {Config} from '@oclif/core';
-import {Deploy as OxygenDeploy} from '@shopify/oxygen-cli/dist/commands/oxygen/deploy.js';
+import {createDeploy} from '@shopify/oxygen-cli/dist/deploy/index.js';
 
-import {Deploy as HydrogenDeploy} from './deploy.js';
+import Deploy from './deploy.js';
 import {getOxygenDeploymentToken} from '../../lib/get-oxygen-token.js';
 
 vi.mock('../../../src/lib/get-oxygen-token');
+vi.mock('@shopify/oxygen-cli/dist/deploy/index.js');
 
 describe('deploy', () => {
-  let spy: SpyInstance;
-
   beforeEach(() => {
-    spy = vi.spyOn(OxygenDeploy.prototype, 'run');
-    const mockRun = async (argv?: string[], opts?: any): Promise<any> => {};
-    spy.mockImplementation(mockRun);
-  });
-
-  afterEach(() => {
-    spy.mockRestore();
+    vi.mocked(createDeploy).mockResolvedValue('http://the-deploy-url.com');
   });
 
   it('calls getOxygenDeploymentToken with the correct parameters', async () => {
     const config = await Config.load();
-    const deploy = new HydrogenDeploy([], config);
-    deploy.argv = ['--shop', 'snowdevil'];
+    const deploy = new Deploy([], config);
+    deploy.argv = ['--shop', 'snowdevil', '--path', './'];
     await deploy.run();
 
     expect(getOxygenDeploymentToken).toHaveBeenCalledWith({
       root: './',
       flagShop: 'snowdevil.myshopify.com',
     });
-  });
-
-  it('pushes the token to argv if not provided with a flag', async () => {
-    vi.mocked(getOxygenDeploymentToken).mockResolvedValueOnce('a-nice-token');
-    const config = await Config.load();
-    const deploy = new HydrogenDeploy([], config);
-    deploy.argv = ['--shop', 'snowdevil'];
-    await deploy.run();
-
-    expect(spy).toBeCalled;
-    expect(deploy.argv).toContain('--token');
-    expect(deploy.argv).toContain('a-nice-token');
   });
 });
