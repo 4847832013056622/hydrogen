@@ -31,6 +31,8 @@ type VariantSelectorProps = {
     | Array<PartialDeep<ProductVariant>>;
   /** Provide a default variant when no options are selected. You can use the utility `getFirstAvailableVariant` to get a default variant. */
   defaultVariant?: PartialDeep<ProductVariant>;
+  /** Selected product options are saved in the URL search params. Prefix these with a custom string so they don't collide with custom search params. */
+  paramPrefix?: string;
   children: ({option}: {option: AvailableOption}) => ReactNode;
 };
 
@@ -39,6 +41,7 @@ export function VariantSelector({
   variants: _variants = [],
   children,
   defaultVariant,
+  paramPrefix = '_',
 }: VariantSelectorProps) {
   const variants =
     _variants instanceof Array ? _variants : flattenConnection(_variants);
@@ -81,24 +84,28 @@ export function VariantSelector({
               // The clone the search params for each value, so we can calculate
               // a new URL for each option value pair
               const clonedSearchParams = new URLSearchParams(searchParams);
-              clonedSearchParams.set(option.name!, value!);
+              clonedSearchParams.set(paramPrefix + option.name!, value!);
 
               // Because we hide options with only one value, they aren't selectable,
               // but they still need to get into the URL
               optionsWithOnlyOneValue.forEach((option) => {
-                clonedSearchParams.set(option.name!, option.values![0]!);
+                clonedSearchParams.set(
+                  paramPrefix + option.name!,
+                  option.values![0]!,
+                );
               });
 
               // Find a variant that matches all selected options.
               const variant = variants.find((variant) =>
                 variant?.selectedOptions?.every(
                   (selectedOption) =>
-                    clonedSearchParams.get(selectedOption?.name!) ===
-                    selectedOption?.value,
+                    clonedSearchParams.get(
+                      paramPrefix + selectedOption?.name!,
+                    ) === selectedOption?.value,
                 ),
               );
 
-              const currentParam = searchParams.get(option.name!);
+              const currentParam = searchParams.get(paramPrefix + option.name!);
 
               const calculatedActiveValue = currentParam
                 ? // If a URL parameter exists for the current option, check if it equals the current value
@@ -135,14 +142,18 @@ export function VariantSelector({
             });
           })
       );
-    }, [options, variants, children]),
+    }, [options, variants, children, paramPrefix]),
   );
 }
 
-type GetSelectedProductOptions = (request: Request) => SelectedOptionInput[];
+type GetSelectedProductOptions = (
+  request: Request,
+  paramPrefix?: string,
+) => SelectedOptionInput[];
 
 export const getSelectedProductOptions: GetSelectedProductOptions = (
   request,
+  paramPrefix = '_',
 ) => {
   if (!(request instanceof Request))
     throw new TypeError(`Expected a Request instance, got ${typeof request}`);
@@ -152,7 +163,9 @@ export const getSelectedProductOptions: GetSelectedProductOptions = (
   const selectedOptions: SelectedOptionInput[] = [];
 
   searchParams.forEach((value, name) => {
-    selectedOptions.push({name, value});
+    if (name.startsWith(paramPrefix)) {
+      selectedOptions.push({name: name.substring(paramPrefix.length), value});
+    }
   });
 
   return selectedOptions;

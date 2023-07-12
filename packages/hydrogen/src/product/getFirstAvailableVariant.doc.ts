@@ -16,10 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
       url: '/docs/api/hydrogen/2023-04/utilities/getselectedproductoptions',
     },
   ],
-  description: `> Caution:
-> This utility is in an unstable pre-release state and may have breaking changes in a future release.
-
-The \`getFirstAvailableVariant\` returns the first variant that is available for purchase.`,
+  description: `The \`getFirstAvailableVariant\` returns the first variant that is available for purchase.`,
   type: 'component',
   defaultExample: {
     description: 'I am the default example',

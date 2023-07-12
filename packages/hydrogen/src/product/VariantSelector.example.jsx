@@ -1,4 +1,4 @@
-import {VariantSelector__unstable as VariantSelector} from '@shopify/hydrogen';
+import {VariantSelector} from '@shopify/hydrogen';
 import {Link} from '@remix-run/react';
 
 const ProductForm = ({product}) => {

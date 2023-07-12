@@ -75,8 +75,16 @@ describe('getFirstAvailableVariant', () => {
 
 describe('getSelectedProductOptions', () => {
   it('returns the selected options', () => {
-    const req = new Request('https://localhost:8080/?Color=Red&Size=S');
+    const req = new Request('https://localhost:8080/?_Color=Red&_Size=S');
     expect(getSelectedProductOptions(req)).toEqual([
+      {name: 'Color', value: 'Red'},
+      {name: 'Size', value: 'S'},
+    ]);
+  });
+
+  it('returns the selected options with custom prefix', () => {
+    const req = new Request('https://localhost:8080/?hiColor=Red&hiSize=S');
+    expect(getSelectedProductOptions(req, 'hi')).toEqual([
       {name: 'Color', value: 'Red'},
       {name: 'Size', value: 'S'},
     ]);
@@ -114,24 +122,24 @@ describe('<VariantSelector>', () => {
       <DocumentFragment>
         <div>
           <a
-            href="/?Color=Red"
+            href="/?_Color=Red"
           >
             Red
           </a>
           <a
-            href="/?Color=Blue"
+            href="/?_Color=Blue"
           >
             Blue
           </a>
         </div>
         <div>
           <a
-            href="/?Size=S"
+            href="/?_Size=S"
           >
             S
           </a>
           <a
-            href="/?Size=M"
+            href="/?_Size=M"
           >
             M
           </a>
@@ -162,12 +170,12 @@ describe('<VariantSelector>', () => {
       <DocumentFragment>
         <div>
           <a
-            href="/?Size=S&Color=Red"
+            href="/?_Size=S&_Color=Red"
           >
             S
           </a>
           <a
-            href="/?Size=M&Color=Red"
+            href="/?_Size=M&_Color=Red"
           >
             M
           </a>
@@ -178,7 +186,7 @@ describe('<VariantSelector>', () => {
 
   it('shows whether or not an option is active', () => {
     vi.mocked(useLocation).mockReturnValueOnce(
-      fillLocation({search: '?Size=M'}),
+      fillLocation({search: '?_Size=M'}),
     );
 
     const {asFragment} = render(
@@ -210,13 +218,13 @@ describe('<VariantSelector>', () => {
       <DocumentFragment>
         <div>
           <a
-            href="/?Size=S&Color=Red"
+            href="/?_Size=S&_Color=Red"
           >
             S
           </a>
           <a
             class="active"
-            href="/?Size=M&Color=Red"
+            href="/?_Size=M&_Color=Red"
           >
             M
           </a>
@@ -253,13 +261,13 @@ describe('<VariantSelector>', () => {
         <div>
           <a
             class="available"
-            href="/?Size=S"
+            href="/?_Size=S"
           >
             S
           </a>
           <a
             class="available"
-            href="/?Size=M"
+            href="/?_Size=M"
           >
             M
           </a>
@@ -306,13 +314,13 @@ describe('<VariantSelector>', () => {
         <div>
           <a
             class="available"
-            href="/?Size=S"
+            href="/?_Size=S"
           >
             S
           </a>
           <a
             class="unavailable"
-            href="/?Size=M"
+            href="/?_Size=M"
           >
             M
           </a>
@@ -361,13 +369,13 @@ describe('<VariantSelector>', () => {
         <div>
           <a
             class="available"
-            href="/?Size=S"
+            href="/?_Size=S"
           >
             S
           </a>
           <a
             class="unavailable"
-            href="/?Size=M"
+            href="/?_Size=M"
           >
             M
           </a>

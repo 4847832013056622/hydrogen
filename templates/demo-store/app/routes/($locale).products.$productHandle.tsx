@@ -7,9 +7,9 @@ import {
   AnalyticsPageType,
   Money,
   ShopPayButton,
-  VariantSelector__unstable as VariantSelector,
-  getSelectedProductOptions__unstable as getSelectedProductOptions,
-  getFirstAvailableVariant__unstable as getFirstAvailableVariant,
+  VariantSelector,
+  getSelectedProductOptions,
+  getFirstAvailableVariant,
 } from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
 import clsx from 'clsx';

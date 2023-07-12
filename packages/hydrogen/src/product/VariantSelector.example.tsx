@@ -1,4 +1,4 @@
-import {VariantSelector__unstable as VariantSelector} from '@shopify/hydrogen';
+import {VariantSelector} from '@shopify/hydrogen';
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
 import {Link} from '@remix-run/react';
 
