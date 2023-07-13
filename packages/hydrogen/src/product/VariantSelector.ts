@@ -9,13 +9,13 @@ import type {
 import {ReactNode, useMemo, createElement, Fragment} from 'react';
 import type {PartialDeep} from 'type-fest';
 
-type AvailableOption = {
+export type VariantOption = {
   name: string;
   value?: string;
-  values: Array<Value>;
+  values: Array<VariantOptionValue>;
 };
 
-type Value = {
+export type VariantOptionValue = {
   value: string;
   isAvailable: boolean;
   path: string;
@@ -33,7 +33,7 @@ type VariantSelectorProps = {
   defaultVariant?: PartialDeep<ProductVariant>;
   /** Selected product options are saved in the URL search params. Prefix these with a custom string so they don't collide with custom search params. */
   paramPrefix?: string;
-  children: ({option}: {option: AvailableOption}) => ReactNode;
+  children: ({option}: {option: VariantOption}) => ReactNode;
 };
 
 export function VariantSelector({
@@ -78,7 +78,7 @@ export function VariantSelector({
           .filter((option) => option?.values?.length! > 1)
           .map((option) => {
             let activeValue;
-            let availableValues: Value[] = [];
+            let availableValues: VariantOptionValue[] = [];
 
             for (let value of option.values!) {
               // The clone the search params for each value, so we can calculate

@@ -52,6 +52,11 @@ export {
   getFirstAvailableVariant,
 } from './product/VariantSelector';
 
+export type {
+  VariantOption,
+  VariantOptionValue,
+} from './product/VariantSelector';
+
 export {
   AnalyticsEventName,
   AnalyticsPageType,
