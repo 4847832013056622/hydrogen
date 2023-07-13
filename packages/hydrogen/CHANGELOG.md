@@ -1,5 +1,29 @@
 # @shopify/hydrogen
 
+## 2023.4.7
+
+### Patch Changes
+
+- Function and component for cart management: ([#786](https://github.com/Shopify/hydrogen/pull/786)) by [@wizardlyhel](https://github.com/wizardlyhel)
+
+  - `createCartHandler` - Creates an object instance that simplifies cart operations such as add/update/remove from cart.
+  - `CartForm` - A form component that helps you sets up form inputs for cart handler.
+
+  **Documentation:**
+
+  - Updated [how-to guides](https://shopify.dev/docs/custom-storefronts/hydrogen/cart)
+  - [`createCartHandler`](https://shopify.dev/docs/api/hydrogen/2023-04/utilities/createcarthandler)
+  - [`CartForm`](https://shopify.dev/docs/api/hydrogen/2023-04/components/cartform)
+
+- Fix cart.get so it doesn't return undefined ([#1085](https://github.com/Shopify/hydrogen/pull/1085)) by [@wizardlyhel](https://github.com/wizardlyhel)
+
+- cartGetDefault should return null to not break typescript ([#1088](https://github.com/Shopify/hydrogen/pull/1088)) by [@wizardlyhel](https://github.com/wizardlyhel)
+
+- Add a `<VariantSelector>` component to make building product forms easier. Also added `getFirstAvailableVariant` and `getSelectedProductOptions` helper functions. See the [proposal](https://gist.github.com/blittle/d9205d4ac72528005dc6f3104c328ecd) for examples. ([#1027](https://github.com/Shopify/hydrogen/pull/1027)) by [@blittle](https://github.com/blittle)
+
+- Updated dependencies [[`7a7456a5`](https://github.com/Shopify/hydrogen/commit/7a7456a5ab073559aef37f043e8aa47570639b96)]:
+  - @shopify/hydrogen-react@2023.4.6
+
 ## 2023.4.6
 
 ### Patch Changes

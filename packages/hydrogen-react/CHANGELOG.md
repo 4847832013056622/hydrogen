@@ -1,5 +1,11 @@
 # @shopify/hydrogen-react
 
+## 2023.4.6
+
+### Patch Changes
+
+- Add discountCode.applicable in default Cart fragment ([#1040](https://github.com/Shopify/hydrogen/pull/1040)) by [@pnodet](https://github.com/pnodet)
+
 ## 2023.4.5
 
 ### Patch Changes

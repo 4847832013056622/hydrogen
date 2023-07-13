@@ -1,5 +1,21 @@
 # @shopify/create-hydrogen
 
+## 4.2.0
+
+### Minor Changes
+
+- The onboarding process when creating new Hydrogen apps has been reworked. Now you can: ([#913](https://github.com/Shopify/hydrogen/pull/913)) by [@frandiox](https://github.com/frandiox)
+
+  - Create a new Shopify storefront and connect it to the local project, or use [Mock.shop](https://mock.shop).
+  - Scaffold CSS strategies: Tailwind, CSS Modules, Vanilla Extract, PostCSS.
+  - Scaffold i18n strategies: subfolders, domains, subdomains.
+  - Automatically generate core routes.
+
+### Patch Changes
+
+- Updated dependencies [[`667ea4fb`](https://github.com/Shopify/hydrogen/commit/667ea4fbf30e632529984c8262010d35e5df38b0), [`ed9782bc`](https://github.com/Shopify/hydrogen/commit/ed9782bc43921d02a2fdbc951c1df1d200812f2d), [`850c4c9b`](https://github.com/Shopify/hydrogen/commit/850c4c9b8f8912c2cb99233eb9e2b4ac68ab457b), [`00f3e592`](https://github.com/Shopify/hydrogen/commit/00f3e59283d3a413a6acd89722bb71580f73aff5), [`5530d987`](https://github.com/Shopify/hydrogen/commit/5530d98756503878fbf5ac013e2103259ffc0443), [`5530d987`](https://github.com/Shopify/hydrogen/commit/5530d98756503878fbf5ac013e2103259ffc0443)]:
+  - @shopify/cli-hydrogen@5.1.0
+
 ## 4.1.3
 
 ### Patch Changes

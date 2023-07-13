@@ -1,5 +1,31 @@
 # @shopify/cli-hydrogen
 
+## 5.1.0
+
+### Minor Changes
+
+- The onboarding process when creating new Hydrogen apps has been reworked. Now you can: ([#913](https://github.com/Shopify/hydrogen/pull/913)) by [@frandiox](https://github.com/frandiox)
+
+  - Create a new Shopify storefront and connect it to the local project, or use [Mock.shop](https://mock.shop).
+  - Scaffold CSS strategies: Tailwind, CSS Modules, Vanilla Extract, PostCSS.
+  - Scaffold i18n strategies: subfolders, domains, subdomains.
+  - Automatically generate core routes.
+
+- Add `login` and `logout` commands. Rework how other commands interact with auth. ([#1022](https://github.com/Shopify/hydrogen/pull/1022)) by [@frandiox](https://github.com/frandiox)
+
+- Support creating new storefronts from the `link` command. ([#1022](https://github.com/Shopify/hydrogen/pull/1022)) by [@frandiox](https://github.com/frandiox)
+
+### Patch Changes
+
+- Show proper error message when Hydrogen App isn't installed on Shop ([#1075](https://github.com/Shopify/hydrogen/pull/1075)) by [@aswamy](https://github.com/aswamy)
+
+- Fix `link` command when no storefronts exist in Admin ([#1053](https://github.com/Shopify/hydrogen/pull/1053)) by [@aswamy](https://github.com/aswamy)
+
+- Add `--codegen-unstable` flag to `build` command. ([#1049](https://github.com/Shopify/hydrogen/pull/1049)) by [@frandiox](https://github.com/frandiox)
+
+- Updated dependencies [[`7a7456a5`](https://github.com/Shopify/hydrogen/commit/7a7456a5ab073559aef37f043e8aa47570639b96)]:
+  - @shopify/hydrogen-react@2023.4.6
+
 ## 5.0.2
 
 ### Patch Changes

@@ -1,5 +1,34 @@
 # demo-store
 
+## 1.0.5
+
+### Patch Changes
+
+- Function and component for cart management: ([#786](https://github.com/Shopify/hydrogen/pull/786)) by [@wizardlyhel](https://github.com/wizardlyhel)
+
+  - `createCartHandler` - Creates an object instance that simplifies cart operations such as add/update/remove from cart.
+  - `CartForm` - A form component that helps you sets up form inputs for cart handler.
+
+  **Documentation:**
+
+  - Updated [how-to guides](https://shopify.dev/docs/custom-storefronts/hydrogen/cart)
+  - [`createCartHandler`](https://shopify.dev/docs/api/hydrogen/2023-04/utilities/createcarthandler)
+  - [`CartForm`](https://shopify.dev/docs/api/hydrogen/2023-04/components/cartform)
+
+- Fix production demo-store ([#1081](https://github.com/Shopify/hydrogen/pull/1081)) by [@wizardlyhel](https://github.com/wizardlyhel)
+
+- Fix cart.get so it doesn't return undefined ([#1085](https://github.com/Shopify/hydrogen/pull/1085)) by [@wizardlyhel](https://github.com/wizardlyhel)
+
+- Fix demostore to check for `shop.primaryDomain` host for navigation menu items. ([#1036](https://github.com/Shopify/hydrogen/pull/1036)) by [@rista404](https://github.com/rista404)
+
+- Add a `<VariantSelector>` component to make building product forms easier. Also added `getFirstAvailableVariant` and `getSelectedProductOptions` helper functions. See the [proposal](https://gist.github.com/blittle/d9205d4ac72528005dc6f3104c328ecd) for examples. ([#1027](https://github.com/Shopify/hydrogen/pull/1027)) by [@blittle](https://github.com/blittle)
+
+- Add @total-typescript/ts-reset to demo-store and skeleton templates ([#1042](https://github.com/Shopify/hydrogen/pull/1042)) by [@juanpprieto](https://github.com/juanpprieto)
+
+- Updated dependencies [[`4c0858f2`](https://github.com/Shopify/hydrogen/commit/4c0858f2bca39a631a868902aef64e537d6dedfd), [`667ea4fb`](https://github.com/Shopify/hydrogen/commit/667ea4fbf30e632529984c8262010d35e5df38b0), [`ed9782bc`](https://github.com/Shopify/hydrogen/commit/ed9782bc43921d02a2fdbc951c1df1d200812f2d), [`90e26dcc`](https://github.com/Shopify/hydrogen/commit/90e26dcc4fabeb8e6dc4f1a1549dc51bf8861bbd), [`850c4c9b`](https://github.com/Shopify/hydrogen/commit/850c4c9b8f8912c2cb99233eb9e2b4ac68ab457b), [`ef8db24b`](https://github.com/Shopify/hydrogen/commit/ef8db24bd7c7dd399240adf576e4f3a259a4e129), [`00f3e592`](https://github.com/Shopify/hydrogen/commit/00f3e59283d3a413a6acd89722bb71580f73aff5), [`5530d987`](https://github.com/Shopify/hydrogen/commit/5530d98756503878fbf5ac013e2103259ffc0443), [`5530d987`](https://github.com/Shopify/hydrogen/commit/5530d98756503878fbf5ac013e2103259ffc0443), [`1befd365`](https://github.com/Shopify/hydrogen/commit/1befd3650dd57cdff584dcd18423cc9b930d91b9)]:
+  - @shopify/hydrogen@2023.4.7
+  - @shopify/cli-hydrogen@5.1.0
+
 ## 1.0.4
 
 ### Patch Changes
